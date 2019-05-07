@@ -1,0 +1,45 @@
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:11.1.0-browsers
+    working_directory: /tmp/workspace
+jobs:
+  build:
+    executor: my-executor
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn build
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - workspace
+  deploy:
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - run: git config --global user.email $GIT_EMAIL
+      - run: git config --global user.name $GIT_NAME
+      - add_ssh_keys:
+          fingerprints:
+            - "8f:b0:8c:26:2c:32:ad:32:cf:c7:44:c0:07:27:ce:29"
+      - run: ssh -o StrictHostKeyChecking=no git@github.com || true
+      - run: yarn deploy:gh-page
+workflows:
+  version: 2.1
+  test_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - deploy:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - build
