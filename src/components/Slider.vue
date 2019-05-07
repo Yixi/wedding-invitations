@@ -5,13 +5,26 @@
         <div :class="currentImageClass" :key="currentImageClass"></div>
       </transition>
     </div>
-    <div class="overlay"></div>
+    <div class="overlay">
+      <div class="info">
+        xxx & xx
+      </div>
+      <div class="countdown">
+        <countdown end="July 7, 2019"></countdown>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
 
+  import Countdown from 'vuejs-countdown'
+
   export default {
+    components: {
+      Countdown
+    },
     name: 'HelloWorld',
     props: {
       msg: String
@@ -32,12 +45,16 @@
     },
     methods: {
       initSlider() {
+        setTimeout(this.switchSlider, 15 * 1000)
+      },
+
+      switchSlider() {
         if (this.currentImageIndex < this.imageCount) {
           this.currentImageIndex++;
         } else {
           this.currentImageIndex = 1;
         }
-        setTimeout(this.initSlider, 15 * 1000)
+        setTimeout(this.switchSlider, 15 * 1000)
       }
     }
   }
@@ -85,6 +102,18 @@
     right: 0;
     bottom: 0;
     z-index: 2;
+  }
+
+  .info {
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 30vh;
+  }
+  .countdown {
+    margin-top: 7vh;
+    text-align: center;
+    color: #fff;
   }
 
   .fade-enter-active, .fade-leave-active {
