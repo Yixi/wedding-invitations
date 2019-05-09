@@ -1,19 +1,19 @@
 <template>
   <div>
     <slider></slider>
-   <map-info></map-info>
+    <Address></Address>
   </div>
 </template>
 
 <script>
   import Slider from './components/Slider.vue'
-  import MapInfo from './components/map-info.vue'
+  import Address from './components/address'
 
   export default {
     name: 'app',
     components: {
       Slider,
-      MapInfo
+      Address
     }
   }
 </script>

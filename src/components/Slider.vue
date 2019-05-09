@@ -50,7 +50,7 @@
     data() {
       return {
         currentImageIndex: 1,
-        imageCount: 3
+        imageCount: 7
       }
     },
     mounted() {
@@ -107,7 +107,7 @@
       .images(@n, (@i + 1));
     }
 
-    .images(3);
+    .images(7);
 
   }
 
