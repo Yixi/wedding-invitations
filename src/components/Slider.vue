@@ -6,12 +6,28 @@
       </transition>
     </div>
     <div class="overlay">
+
+      <div class="qinjian">
+        <div><img src="./../assets/hunli.png" alt=""></div>
+        <div><img src="./../assets/qingjian.png" alt=""></div>
+      </div>
+
       <div class="info">
-        xxx & xx
+        刘应皓 & 叶子
+      </div>
+      <div class="wording">
+        诚邀您参加我们的婚礼
+      </div>
+      <div class="date">
+        2019/07/07
+      </div>
+      <div class="address">
+        天之府温德姆至尊豪庭大酒店
       </div>
       <div class="countdown">
         <countdown end="July 7, 2019"></countdown>
       </div>
+      <div class="border"></div>
     </div>
 
   </div>
@@ -20,6 +36,8 @@
 <script>
 
   import Countdown from 'vuejs-countdown'
+
+  const PIC_SWITCH_TIME = 10 * 1000
 
   export default {
     components: {
@@ -45,7 +63,7 @@
     },
     methods: {
       initSlider() {
-        setTimeout(this.switchSlider, 15 * 1000)
+        setTimeout(this.switchSlider, PIC_SWITCH_TIME)
       },
 
       switchSlider() {
@@ -54,7 +72,7 @@
         } else {
           this.currentImageIndex = 1;
         }
-        setTimeout(this.switchSlider, 15 * 1000)
+        setTimeout(this.switchSlider, PIC_SWITCH_TIME)
       }
     }
   }
@@ -83,7 +101,7 @@
 
     .images(@n, @i: 1) when (@i =< @n) {
       .image-@{i} {
-        background: url('../assets/@{i}.jpg') no-repeat center center;
+        background: url('../assets/photo/@{i}.jpg') no-repeat center center;
         background-size: cover;
       }
       .images(@n, (@i + 1));
@@ -102,19 +120,76 @@
     right: 0;
     bottom: 0;
     z-index: 2;
+    text-align: center;
+    color: fade(#fff, 85%);
+
+    @padding: 15px;
+    @w: 100px;
+    @h: 150px;
+
+    &:before {
+      content: ' ';
+      width: @w;
+      height: @h;
+      position: absolute;
+      left: @padding;
+      top: @padding;
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+    }
+
+    &:after {
+      content: ' ';
+      width: @w;
+      height: @h;
+      position: absolute;
+      right: @padding;
+      bottom: @padding;
+      border-right: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
   }
 
   .info {
     color: white;
     font-size: 2em;
-    text-align: center;
-    margin-top: 30vh;
+    margin-top: 5vh;
   }
+
+  .qinjian {
+    margin-top: 17vh;
+    width: 140px;
+    height: 130px;
+    padding-top: 10px;
+    display: inline-block;
+    background: rgba(0,0,0,.2);
+  }
+
+  .date {
+    margin-top: 3vh;
+    font-size: 23px;
+    letter-spacing: 2px;
+  }
+
+  .address {
+    font-size: 12px;
+  }
+
+  .wording {
+    margin-top: 3vh;
+  }
+
   .countdown {
-    margin-top: 7vh;
-    text-align: center;
-    color: #fff;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+    /*bottom: 2vh;*/
+    margin-top: 1vh;
+    transform: scale(0.6);
+
   }
+
+
 
   .fade-enter-active, .fade-leave-active {
     transition: opacity 2s ease-in-out;
