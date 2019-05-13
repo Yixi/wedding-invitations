@@ -1,6 +1,7 @@
 <template>
   <div>
     <slider></slider>
+    <gallery></gallery>
     <Address></Address>
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
   import Slider from './components/Slider.vue'
   import Address from './components/address'
+  import Gallery from './components/gallery'
 
   export default {
     name: 'app',
     components: {
       Slider,
-      Address
+      Address,
+      Gallery
     }
   }
 </script>

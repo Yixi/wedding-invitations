@@ -23,7 +23,7 @@
 
 <style lang="less" scoped>
   .address {
-    background-color: #efefef;
+    background-color: #fafbff;
   }
 
   .wel {
