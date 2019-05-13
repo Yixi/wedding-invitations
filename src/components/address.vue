@@ -6,7 +6,6 @@
       <div>席设：天之府温德姆至尊豪庭大酒店</div>
     </div>
     <a-map></a-map>
-
   </div>
 </template>
 
@@ -34,6 +33,7 @@
 
   .detail {
     padding: 0 20px;
+    text-align: center;
   }
 
 </style>

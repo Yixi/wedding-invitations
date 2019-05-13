@@ -105,8 +105,9 @@
 <style>
   .my-map {
     margin: 0 auto;
-    width: calc(100% - 40px);
-    height: 200px;
+    width: calc(100vw - 40px);
+    height: calc(100vw - 40px);
+    max-height: 400px;
     border: 1px solid #c1c1c1;
   }
 
@@ -128,7 +129,8 @@
   }
 
   .map-info {
-    height: 200px;
+    height: calc(100vw - 40px);
+    max-height: 400px;
     width: 100%;
     padding: 20px 0px;
   }
