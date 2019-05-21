@@ -6,10 +6,22 @@
 
 <script>
   export default {
+    data() {
+      return {
+        played: false
+      }
+    },
     mounted() {
-      this.$nextTick(() => {
+      document.ontouchstart = () => {
+        if (this.played) return
+        this.played = true
+        this.play()
+      }
+    },
+    methods: {
+      play() {
         this.$refs.audio.play()
-      })
+      }
     }
   }
 </script>
