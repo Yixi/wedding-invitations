@@ -3,6 +3,7 @@
     <slider></slider>
     <gallery></gallery>
     <Address></Address>
+    <music></music>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
   import Slider from './components/Slider.vue'
   import Address from './components/address'
   import Gallery from './components/gallery'
+  import Music from './components/music'
 
   export default {
     name: 'app',
     components: {
       Slider,
       Address,
-      Gallery
+      Gallery,
+      Music
     }
   }
 </script>
